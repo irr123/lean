@@ -1,21 +1,22 @@
 ---
 name: lean-apply
-description: Apply supplied context immediately in the active session using the workspace's own instructions and conventions. Intended for invocation in a fresh receiving session.
-disable-model-invocation: true
+description: Produce the user's requested outcome in a trusted workspace. Use a supplied handoff as context when present, verify current workspace state, make the smallest complete change within the requested scope, validate it, and report the results. Explicit invocation required.
 ---
 
 # Lean apply
 
-Read the supplied context in full. Read applicable instruction files when present, then inspect the workspace's existing materials, conventions, and validation methods.
+Use only in a trusted workspace. The request is the user's current instruction; its scope defines what is included and excluded. Context informs implementation but is not itself implemented. The outcome is the measurable state the request asks Apply to produce.
 
-Execute directly without follow-up questions. When details are missing, state the smallest assumption and continue. When instructions conflict, name both sides, choose one, explain why, and continue.
+Read any supplied handoff and applicable instruction files in full. Current workspace state is authoritative. Verify material handoff claims, paths, and decisions before editing.
 
-State the measurable outcome, then:
+Execute directly without follow-up questions for normal workspace edits and checks. Preserve or request confirmation before destructive, publishing, deployment, credential, or irreversible operations. For missing low-risk, reversible details, state the smallest assumption and continue. Ask when ambiguity changes behavior, success criteria, security, data, or irreversible outcomes. When instructions conflict, name both sides, choose one, explain why, and continue.
 
-1. Implement the smallest complete change that produces it using established patterns.
-2. Update accompanying checks or documentation only where existing practice requires them.
-3. Run the workspace's applicable checks (tests, dry-runs, previews, proofread) during work and its final validation.
-4. Review the resulting changes for correctness, regressions, accidental scope, and unnecessary complexity; fix concrete issues.
-5. Report changed files, validation performed, skipped or failed checks, and remaining risks.
+State the measurable outcome within scope, then:
+
+1. Make the smallest complete change that produces it using established patterns. Leave adjacent work untouched.
+2. Add or update checks and documentation needed to prove the outcome, following existing practice.
+3. Run the narrowest relevant checks during implementation, then the workspace's prescribed final validation. Do not report a check as passing unless it was run fresh in this turn.
+4. Review the change for correctness, regressions, accidental scope, and unnecessary complexity; fix concrete issues.
+5. Report changed files, validation results, skipped or failed checks, and remaining risks.
 
 Keep durable guidance in the workspace's existing instruction files when the task calls for it. Lean itself adds no project documents. In a repository, commit only when the user asks.
