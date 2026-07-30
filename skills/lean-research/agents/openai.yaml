@@ -1,0 +1,5 @@
+interface:
+  display_name: "Lean Research"
+  short_description: "Cited findings, no changes"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Lean Apply"
+  short_description: "The smallest checked change"
+policy:
+  allow_implicit_invocation: false

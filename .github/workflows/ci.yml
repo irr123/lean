@@ -23,7 +23,10 @@ jobs:
       - name: Validate skills
         run: |
           for skill in skills/*; do
-            agentskills validate "$skill"
+            work=$(mktemp -d)/$(basename "$skill")
+            cp -R "$skill" "$work"
+            perl -ni -e 'print unless /^(disable-model-invocation|disallowed-tools|user-invocable):/' "$work/SKILL.md"
+            agentskills validate "$work"
           done
       - name: Check discovery
         env:

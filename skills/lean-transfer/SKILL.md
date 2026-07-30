@@ -1,6 +1,9 @@
 ---
 name: lean-transfer
 description: Create one temporary Markdown handoff from selected context. Explicit invocation required.
+allowed-tools: read write Read Write
+disallowed-tools: mcp__custom-tools__write mcp__custom-tools__edit
+disable-model-invocation: true
 ---
 
 # Lean transfer

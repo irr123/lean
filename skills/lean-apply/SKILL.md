@@ -1,6 +1,8 @@
 ---
 name: lean-apply
 description: Make the smallest checked change in a trusted workspace. Explicit invocation required.
+allowed-tools: read write edit grep find ls subagent Read Write Edit Grep Glob
+disable-model-invocation: true
 ---
 
 # Lean apply
