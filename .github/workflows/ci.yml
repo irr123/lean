@@ -35,7 +35,7 @@ jobs:
         run: |
           output=$(npx --yes skills@1.5.20 add . --list)
           printf '%s\n' "$output"
-          grep -q 'Found 3 skills' <<< "$output"
-          for skill in lean-apply lean-research lean-transfer; do
+          grep -q 'Found 2 skills' <<< "$output"
+          for skill in lean-research lean-transfer; do
             grep -q "$skill" <<< "$output"
           done

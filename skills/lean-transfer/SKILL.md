@@ -1,6 +1,6 @@
 ---
 name: lean-transfer
-description: Create one temporary Markdown handoff from selected context. Explicit invocation required.
+description: Write one Markdown handoff to a temp file.
 allowed-tools: read write Read Write
 disallowed-tools: mcp__custom-tools__write mcp__custom-tools__edit
 disable-model-invocation: true
@@ -8,9 +8,8 @@ disable-model-invocation: true
 
 # Lean transfer
 
-Write one Markdown handoff in the system temporary directory. Nothing else.
+Write one Markdown handoff to the temp directory. Nothing else.
 
-1. Use the active topic when the user gives no narrower context.
-2. Preserve scope, state, evidence, decisions, unresolved questions, and stated follow-up, including imperative goals. Keep citations. Separate observations from assumptions. Reference persisted artifacts by path or URL.
-3. Redact secrets and PII. Mark loss. Resolve temp directory. Atomically create one unique owner-only file where supported. Clean partial files; abort on creation or permission failure.
-4. Reread without history. Verify recoverability, material claims, decisions, assumptions, questions, Markdown, one file, absolute path, and permissions. Report path. Stop.
+1. Preserve what a fresh agent needs to resume: scope, state, evidence, decisions, open questions, and goals. Cite sources; reference persisted artifacts by path. Separate evidence from assumptions.
+2. Redact secrets and PII. Write one owner-only file.
+3. Report the absolute path.

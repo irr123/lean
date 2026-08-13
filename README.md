@@ -17,14 +17,13 @@ npx skills add irr123/lean
 |---|---|---|
 | `lean-research` | Research with cited findings | None |
 | `lean-transfer` | Preserve selected context | One temporary handoff |
-| `lean-apply` | Make a checked change | Edits and commands |
 
-All three require direct invocation, and pre-approve only the tools their job needs. Pi and Claude Code read `disable-model-invocation`; Codex reads `policy.allow_implicit_invocation` from `agents/openai.yaml`. OpenCode ignores both fields, so gate them in `opencode.json`:
+`lean-transfer` requires direct invocation; the model may reach for `lean-research` on its own. Each pre-approves only the tools its job needs. Pi and Claude Code read `disable-model-invocation`; Codex reads `policy.allow_implicit_invocation` from `agents/openai.yaml`. OpenCode ignores both fields, so gate the direct-invocation skill in `opencode.json`:
 
 ```json
 {
   "permission": {
-    "skill": { "lean-*": "ask" }
+    "skill": { "lean-transfer": "ask" }
   }
 }
 ```
@@ -34,7 +33,7 @@ All three require direct invocation, and pre-approve only the tools their job ne
 ```text
 /skill:lean-research Investigate a deployment failure
 /skill:lean-transfer Preserve context
-/skill:lean-apply @/tmp/<handoff>.md
+do, verify, report @/tmp/<handoff>.md
 ```
 
 [MIT](LICENSE)
