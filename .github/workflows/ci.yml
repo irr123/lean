@@ -35,7 +35,8 @@ jobs:
         run: |
           output=$(npx --yes skills@1.5.20 add . --list)
           printf '%s\n' "$output"
-          grep -q 'Found 2 skills' <<< "$output"
-          for skill in lean-research lean-transfer; do
-            grep -q "$skill" <<< "$output"
+          expected=$(ls -d skills/*/ | wc -l | tr -d ' ')
+          grep -q "Found $expected skills" <<< "$output"
+          for skill in skills/*/; do
+            grep -q "$(basename "$skill")" <<< "$output"
           done

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Lean Niche"
+  short_description: "Niches from trigger events and indie/HN chatter"
+policy:
+  allow_implicit_invocation: false

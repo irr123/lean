@@ -17,13 +17,14 @@ npx skills add irr123/lean
 |---|---|---|
 | `lean-research` | Research with cited findings | None |
 | `lean-transfer` | Preserve selected context | One temporary handoff |
+| `lean-niche` | Hunt niches from vendor trigger events | None |
 
-`lean-transfer` requires direct invocation; the model may reach for `lean-research` on its own. Each pre-approves only the tools its job needs. Pi and Claude Code read `disable-model-invocation`; Codex reads `policy.allow_implicit_invocation` from `agents/openai.yaml`. OpenCode ignores both fields, so gate the direct-invocation skill in `opencode.json`:
+`lean-transfer` and `lean-niche` require direct invocation (one for its write, one for its subagent fan-out cost); the model may reach for `lean-research` on its own. Each pre-approves only the tools its job needs. Pi and Claude Code read `disable-model-invocation`; Codex reads `policy.allow_implicit_invocation` from `agents/openai.yaml`. OpenCode ignores both fields, so gate the direct-invocation skills in `opencode.json`:
 
 ```json
 {
   "permission": {
-    "skill": { "lean-transfer": "ask" }
+    "skill": { "lean-transfer": "ask", "lean-niche": "ask" }
   }
 }
 ```
@@ -34,6 +35,7 @@ npx skills add irr123/lean
 /skill:lean-research Investigate a deployment failure
 /skill:lean-transfer Preserve context
 do, verify, report @/tmp/<handoff>.md
+/skill:lean-niche Find an indie SaaS niche from vendor trigger events
 ```
 
 [MIT](LICENSE)
